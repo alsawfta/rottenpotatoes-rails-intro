@@ -17,11 +17,7 @@ class MoviesController < ApplicationController
     @movies = Movie.order(sort_column)
     if params[:ratings]
       @movies = Movie.where(params[:ratings].present? ? {:rating => (params[:ratings].keys)} :{}).order(params[:sort])
-
     end
-
-
-
     @all_ratings = Movie.all_ratings
     @selected_ratings = []
     if !params[:ratings].nil?
@@ -29,17 +25,12 @@ class MoviesController < ApplicationController
         @selected_ratings << key
       end
     elsif
-    @selected_ratings = @all_ratings
+      @selected_ratings = @all_ratings
     end
-
-
-
     @set_ratings = params[:ratings]
     if !@set_ratings
       @set_ratings = Hash.new
     end
-
-
 
   end
 
